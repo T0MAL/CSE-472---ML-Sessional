@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FlipDown Countdown</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flipdown/dist/flipdown.min.css">
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #7c7e81;
+      color: white;
+      font-family: Arial, sans-serif;
+    }
+  </style>
+</head>
+<body>
+  <!-- Place your FlipDown placeholder container here -->
+  <div id="flipdown" class="flipdown"></div>
+
+  <!-- Include FlipDown script -->
+  <script src="https://cdn.jsdelivr.net/npm/flipdown/dist/flipdown.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Define your countdown timestamp here (e.g., New Year's Date)
+      const endOfYear = new Date(new Date().getFullYear() + 1, 0, 1).getTime() / 1000;
+      
+      // Initialize FlipDown
+      const flipdown = new FlipDown(endOfYear, {
+  theme: 'light'
+})
+        .start()
+        .ifEnded(() => {
+          console.log('The countdown has ended!');
+        });
+
+      // Optionally, add an event listener to handle countdown end
+      flipdown.ifEnded(() => {
+        alert('Happy New Year!');
+      });
+    });
+  </script>
+</body>
+</html>
